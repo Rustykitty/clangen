@@ -97,6 +97,7 @@ class ProfileScreen(Screens):
 
     df = image_cache.load_image("resources/images/buttons/exile_df.png").convert_alpha()
     sc = image_cache.load_image("resources/images/buttons/guide_sc.png").convert_alpha()
+    ur = image_cache.load_image("resources/images/buttons/send_ur.png").convert_alpha()
 
     # Keep track of current tabs open. Can be used to keep tabs open when pages are switched, and
     # helps with exiting the screen
@@ -312,7 +313,14 @@ class ProfileScreen(Screens):
                     self.build_profile()
                     self.update_disabled_buttons_and_text()
                 if self.the_cat.dead:
-                    if self.the_cat.df is True:
+                    if self.the_cat.df:
+                        self.the_cat.outside, self.the_cat.exiled = True, False
+                        self.the_cat.df = False
+                        game.clan.add_to_unknown(self.the_cat)
+                        self.the_cat.thought = (
+                            "Is wandering the Unknown Residence"
+                        )
+                    elif self.the_cat.outside:
                         self.the_cat.outside, self.the_cat.exiled = False, False
                         self.the_cat.df = False
                         game.clan.add_to_starclan(self.the_cat)
@@ -2194,6 +2202,9 @@ class ProfileScreen(Screens):
                 text = "screens.profile.exile_df"
                 layer = self.df
                 if self.the_cat.df:
+                    text = "screens.profile.send_ur"
+                    layer = self.ur
+                elif self.the_cat.outside:
                     text = "screens.profile.guide_sc"
                     layer = self.sc
 
