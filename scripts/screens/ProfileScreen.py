@@ -541,9 +541,16 @@ class ProfileScreen(Screens):
         # use these attributes to create differing profiles for StarClan cats etc.
         is_sc_instructor = False
         is_df_instructor = False
+        is_ur_instructor = False
         if self.the_cat is None:
             return
         if (
+                self.the_cat.dead
+                and game.clan.instructor.ID == self.the_cat.ID
+                and self.the_cat.outside
+        ):
+            is_ur_instructor = True
+        elif (
             self.the_cat.dead
             and game.clan.instructor.ID == self.the_cat.ID
             and self.the_cat.df is False
@@ -568,6 +575,10 @@ class ProfileScreen(Screens):
         if is_df_instructor:
             self.the_cat.thought = i18n.t(
                 "screens.profile.guide_thought_df", clan=game.clan.name
+            )
+        if is_ur_instructor:
+            self.the_cat.thought = i18n.t(
+                "screens.profile.guide_thought_ur", clan=game.clan.name
             )
 
         self.profile_elements["cat_name"] = pygame_gui.elements.UITextBox(
