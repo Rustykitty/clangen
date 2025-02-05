@@ -313,21 +313,21 @@ class ProfileScreen(Screens):
                     self.build_profile()
                     self.update_disabled_buttons_and_text()
                 if self.the_cat.dead:
-                    if self.the_cat.df:
+                    if self.the_cat.df: # DF -> UR
                         self.the_cat.outside, self.the_cat.exiled = True, False
                         self.the_cat.df = False
                         game.clan.add_to_unknown(self.the_cat)
                         self.the_cat.thought = (
-                            "Is wandering the Unknown Residence"
+                            "Is surprised to find themself walking among a foreign land"
                         )
-                    elif self.the_cat.outside:
+                    elif self.the_cat.outside: # UR -> SC
                         self.the_cat.outside, self.the_cat.exiled = False, False
                         self.the_cat.df = False
                         game.clan.add_to_starclan(self.the_cat)
                         self.the_cat.thought = (
                             "Is relieved to once again hunt in StarClan"
                         )
-                    else:
+                    else: # SC -> DF
                         self.the_cat.outside, self.the_cat.exiled = False, False
                         self.the_cat.df = True
                         game.clan.add_to_darkforest(self.the_cat)
