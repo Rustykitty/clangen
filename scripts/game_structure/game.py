@@ -161,15 +161,14 @@ for setting, values in _settings["__other"].items():
     settings[setting] = values[0]
     setting_lists[setting] = values
 
-_ = []
-_.append(_settings["general"])
-
-for cat in _:  # Add all the settings to the settings dictionary
+for cat in (
+    _settings["general"],
+):  # Add all the settings to the settings dictionary
     for setting_name, inf in cat.items():
         settings[setting_name] = inf[2]
         setting_lists[setting_name] = [inf[2], not inf[2]]
 del _settings
-del _
+
 # End init settings
 
 settings_changed = False
