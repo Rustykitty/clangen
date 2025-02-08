@@ -210,6 +210,7 @@ def update_game():
     clicked = False
     keyspressed = []
 
+
 def safe_save(path: str, write_data, check_integrity=False, max_attempts: int = 15):
     """If write_data is not a string, assumes you want this
     in json format. If check_integrity is true, it will read back the file
@@ -267,6 +268,7 @@ def safe_save(path: str, write_data, check_integrity=False, max_attempts: int = 
             write_file.flush()
             os.fsync(write_file.fileno())
 
+
 def read_clans():
     """with open(get_save_dir() + '/clanlist.txt', 'r') as read_file:
         clan_list = read_file.read()
@@ -321,6 +323,7 @@ def read_clans():
         return None
     return clan_list
 
+
 def save_clanlist(loaded_clan=None):
     """clans = []
     if loaded_clan:
@@ -342,6 +345,7 @@ def save_clanlist(loaded_clan=None):
         if os.path.exists(get_save_dir() + "/currentclan.txt"):
             os.remove(get_save_dir() + "/currentclan.txt")
 
+
 def save_settings(currentscreen=None):
     """Save user settings for later use"""
     global settings_changed
@@ -359,6 +363,7 @@ def save_settings(currentscreen=None):
         if currentscreen is not None:
             currentscreen.change_screen("start screen")
 
+
 def load_settings():
     """Load settings that user has saved from previous use"""
 
@@ -375,6 +380,7 @@ def load_settings():
             settings[key] = value
 
     switches["language"] = settings["language"]
+
 
 def switch_setting(setting_name):
     """Call this function to change a setting given in the parameter by one to the right on it's list"""
@@ -394,6 +400,7 @@ def switch_setting(setting_name):
         settings[setting_name] = setting_lists[setting_name][
             list_index + 1
         ]
+
 
 def save_cats():
     """Save the cat data."""
@@ -432,6 +439,7 @@ def save_cats():
             inter_cat.save_relationship_of_cat(directory + "/relationships")
 
     safe_save(f"{get_save_dir()}/{clanname}/clan_cats.json", clan_cats)
+
 
 def save_faded_cats(clanname):
     """Deals with fades cats, if needed, adding them as faded"""
@@ -511,6 +519,7 @@ def save_faded_cats(clanname):
                 write_file.flush()
                 os.fsync(write_file.fileno())
 
+
 def save_events():
     """
     Save current events list to events.json
@@ -519,6 +528,7 @@ def save_events():
     for event in cur_events_list:
         events_list.append(event.to_dict())
     safe_save(f"{get_save_dir()}/{clan.name}/events.json", events_list)
+
 
 def add_faded_offspring_to_faded_cat(parent, offspring):
     """In order to siblings to work correctly, and not to lose relation info on fading, we have to keep track of
@@ -548,6 +558,7 @@ def add_faded_offspring_to_faded_cat(parent, offspring):
 
     return True
 
+
 def load_events():
     """
     Load events from events.json and place into cur_events_list.
@@ -565,6 +576,7 @@ def load_events():
                 cur_events_list.append(event_obj)
     except FileNotFoundError:
         pass
+
 
 def get_config_value(*args):
     """Fetches a value from the config dictionary. Pass each key as a
