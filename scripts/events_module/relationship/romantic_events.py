@@ -13,7 +13,7 @@ from scripts.cat_relations.relationship import (
 )
 import scripts.cat_relations.interaction as interactions
 from scripts.event_class import Single_Event
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.utility import (
     get_highest_romantic_relation,
     event_text_adjust,

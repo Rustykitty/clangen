@@ -6,7 +6,7 @@ import i18n
 
 from scripts.cat.cats import Cat
 from scripts.cat.skills import SkillPath
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.utility import get_alive_clan_queens
 
 

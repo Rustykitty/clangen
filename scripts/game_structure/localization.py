@@ -5,7 +5,7 @@ import i18n
 import i18n.translations
 import ujson
 
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 lang_config: Optional[Dict] = None
 _lang_config_directory = os.path.join("resources", "lang", "{locale}", "config.json")

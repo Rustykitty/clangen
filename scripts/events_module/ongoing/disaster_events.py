@@ -3,7 +3,7 @@ import random
 from scripts.cat.cats import Cat
 from scripts.event_class import Single_Event
 from scripts.events_module.generate_events import GenerateEvents
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.utility import get_alive_status_cats
 
 

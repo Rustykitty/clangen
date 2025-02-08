@@ -14,7 +14,7 @@ from scripts.game_structure import localization
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAgeEnum
 from scripts.clan import Clan
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
 from scripts.special_dates import get_special_date, contains_special_date_tag

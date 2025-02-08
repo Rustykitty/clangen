@@ -11,7 +11,7 @@ import asyncio
 import threading
 from time import time
 
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 status_dict = {
     "start screen": "At the start screen",

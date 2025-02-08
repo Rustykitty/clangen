@@ -7,7 +7,7 @@ from scripts.conditions import (
     get_amount_cat_for_one_medic,
     medical_cats_condition_fulfilled,
 )
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 # ---------------------------------------------------------------------------- #

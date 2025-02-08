@@ -3,7 +3,7 @@ import random
 from scripts.cat.cats import Cat
 from scripts.cat.history import History
 from scripts.event_class import Single_Event
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 # ---------------------------------------------------------------------------- #

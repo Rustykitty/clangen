@@ -272,7 +272,7 @@ class TestPossibleMateFunction(unittest.TestCase):
         self.assertFalse(dead_cat.is_potential_mate(normal_cat))
         self.assertFalse(normal_cat.is_potential_mate(dead_cat))
 
-    @patch('scripts.game_structure.game_essentials.game.settings')
+    @patch('scripts.game_structure.game.settings')
     def test_possible_setting(self, settings):
         mentor = Cat(moons=50)
         former_appr = Cat(moons=20)

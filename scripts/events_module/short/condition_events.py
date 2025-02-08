@@ -20,7 +20,7 @@ from scripts.conditions import (
 from scripts.event_class import Single_Event
 from scripts.events_module.short.handle_short_events import handle_short_events
 from scripts.events_module.short.scar_events import Scar_Events
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.utility import (
     event_text_adjust,
     get_alive_status_cats,

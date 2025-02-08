@@ -2,7 +2,7 @@ import re
 
 import ujson
 
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.utility import (
     get_alive_status_cats,
     filter_relationship_type,

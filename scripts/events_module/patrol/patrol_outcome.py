@@ -24,7 +24,7 @@ from scripts.utility import (
     gather_cat_objects,
     adjust_list_text,
 )
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.cat.skills import SkillPath
 from scripts.cat.cats import Cat, ILLNESSES, INJURIES, PERMANENT
 from scripts.cat.enums import CatAgeEnum

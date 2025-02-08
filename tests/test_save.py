@@ -5,7 +5,7 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.game_structure.game_essentials import Game
+from scripts.game_structure import game
 from scripts.housekeeping.datadir import get_save_dir
 
 if not os.path.exists("tests/testSaves"):
@@ -49,7 +49,7 @@ class LoadSave(unittest.TestCase):
             return None
 
     def new_implimentation(self):
-        return Game().read_clans()
+        return game.read_clans()
 
     def example_save(self, id):
         if os.path.exists(get_save_dir()):
@@ -130,7 +130,7 @@ class MigrateSave(unittest.TestCase):
                 with open(get_save_dir() + "/clanlist.txt", "r") as read_file:
                     clan_name = read_file.read().strip().splitlines()[0]
 
-                Game().read_clans()  # the load save function should migrate the save
+                game.read_clans()  # the load save function should migrate the save
 
                 file_list = os.listdir(get_save_dir())
                 self.assertIn(

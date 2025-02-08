@@ -12,7 +12,7 @@ from scripts.cat_relations.interaction import (
     rel_fulfill_rel_constraints,
 )
 from scripts.event_class import Single_Event
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.utility import (
     change_relationship_values,
     process_text,

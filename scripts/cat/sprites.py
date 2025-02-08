@@ -4,7 +4,7 @@ from copy import copy
 import pygame
 import ujson
 
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 class Sprites:

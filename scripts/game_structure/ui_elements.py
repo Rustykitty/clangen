@@ -13,8 +13,7 @@ from pygame_gui.core.text.text_box_layout import TextBoxLayout
 from pygame_gui.core.utility import translate
 from pygame_gui.elements import UIAutoResizingContainer
 
-from scripts.game_structure import image_cache
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import image_cache, game
 from scripts.utility import (
     ui_scale,
     shorten_text_to_fit,

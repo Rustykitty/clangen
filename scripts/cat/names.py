@@ -8,7 +8,7 @@ import random
 
 import ujson
 
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.housekeeping.datadir import get_save_dir
 
 

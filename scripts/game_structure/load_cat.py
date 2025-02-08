@@ -12,7 +12,7 @@ from ..cat.personality import Personality
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
-from .game_essentials import game
+from . import game
 from ..cat.skills import CatSkills
 from ..housekeeping.datadir import get_save_dir
 

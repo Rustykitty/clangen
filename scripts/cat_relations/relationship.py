@@ -11,7 +11,7 @@ from scripts.cat_relations.interaction import (
 )
 import scripts.cat_relations.interaction as interactions
 from scripts.event_class import Single_Event
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.utility import get_personality_compatibility, process_text
 
 

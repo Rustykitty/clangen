@@ -19,8 +19,7 @@ from pygame_gui.windows import UIMessageWindow
 
 from scripts.cat.history import History
 from scripts.cat.names import Name
-from scripts.game_structure import image_cache
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import image_cache, game
 from scripts.game_structure.localization import (
     get_lang_config,
     get_custom_pronouns,

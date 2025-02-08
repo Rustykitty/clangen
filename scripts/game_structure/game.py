@@ -3,12 +3,14 @@ import traceback
 from ast import literal_eval
 from shutil import move as shutil_move
 
+import pygame
 import ujson
 
 from scripts.event_class import Single_Event
 from scripts.game_structure.screen_settings import toggle_fullscreen
 from scripts.housekeeping.datadir import get_save_dir, get_temp_dir
 
+pygame.init()
 
 max_name_length = 10
 # max_events_displayed = 10
@@ -334,7 +336,7 @@ def save_clanlist(loaded_clan=None):
         if os.path.exists(get_save_dir() + "/clanlist.txt"):
             # we don't need clanlist.txt anymore
             os.remove(get_save_dir() + "/clanlist.txt")
-        game.safe_save(f"{get_save_dir()}/currentclan.txt", loaded_clan)
+        safe_save(f"{get_save_dir()}/currentclan.txt", loaded_clan)
     else:
         if os.path.exists(get_save_dir() + "/currentclan.txt"):
             os.remove(get_save_dir() + "/currentclan.txt")
@@ -346,7 +348,7 @@ def save_settings(currentscreen=None):
 
     settings_changed = False
     try:
-        game.safe_save(get_save_dir() + "/settings.json", settings)
+        safe_save(get_save_dir() + "/settings.json", settings)
     except RuntimeError:
         from scripts.game_structure.windows import SaveError
 
@@ -392,12 +394,12 @@ def save_cats():
     """Save the cat data."""
 
     clanname = ""
-    """ if game.switches['clan_name'] != '':
-        clanname = game.switches['clan_name']
-    elif len(game.switches['clan_name']) > 0:
-        clanname = game.switches['clan_list'][0]"""
-    if game.clan is not None:
-        clanname = game.clan.name
+    """ if switches['clan_name'] != '':
+        clanname = switches['clan_name']
+    elif len(switches['clan_name']) > 0:
+        clanname = switches['clan_list'][0]"""
+    if clan is not None:
+        clanname = clan.name
     directory = get_save_dir() + "/" + clanname
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -428,13 +430,14 @@ def save_cats():
 
 def save_faded_cats(clanname):
     """Deals with fades cats, if needed, adding them as faded"""
-    if game.cat_to_fade:
+    # nonlocal cat_to_fade
+    if cat_to_fade:
         directory = get_save_dir() + "/" + clanname + "/faded_cats"
         if not os.path.exists(directory):
             os.makedirs(directory)
 
     copy_of_info = ""
-    for cat in game.cat_to_fade:
+    for cat in cat_to_fade:
         inter_cat = cat_class.all_cats[cat]
 
         # Add ID to list of faded cats.
@@ -456,7 +459,7 @@ def save_faded_cats(clanname):
                     print(f"WARNING: Can't find parent {x} of {cat.name}")
 
         # Get a copy of info
-        if game.clan.clan_settings["save_faded_copy"]:
+        if clan.clan_settings["save_faded_copy"]:
             copy_of_info += (
                 ujson.dumps(inter_cat.get_save_dict(), indent=4)
                 + "\n--------------------------------------------------------------------------\n"
@@ -472,10 +475,10 @@ def save_faded_cats(clanname):
         # Remove the cat from the active cats lists
         clan.remove_cat(cat)
 
-    game.cat_to_fade = []
+    cat_to_fade = []
 
     # Save the copies, flush the file.
-    if game.clan.clan_settings["save_faded_copy"]:
+    if clan.clan_settings["save_faded_copy"]:
         with open(
             get_save_dir() + "/" + clanname + "/faded_cats_info_copy.txt",
             "a",
@@ -507,9 +510,9 @@ def save_events():
     Save current events list to events.json
     """
     events_list = []
-    for event in game.cur_events_list:
+    for event in cur_events_list:
         events_list.append(event.to_dict())
-    game.safe_save(f"{get_save_dir()}/{game.clan.name}/events.json", events_list)
+    safe_save(f"{get_save_dir()}/{clan.name}/events.json", events_list)
 
 def add_faded_offspring_to_faded_cat(parent, offspring):
     """In order to siblings to work correctly, and not to lose relation info on fading, we have to keep track of
@@ -541,7 +544,7 @@ def add_faded_offspring_to_faded_cat(parent, offspring):
 
 def load_events():
     """
-    Load events from events.json and place into game.cur_events_list.
+    Load events from events.json and place into cur_events_list.
     """
 
     clanname = clan.name
@@ -551,9 +554,9 @@ def load_events():
         with open(events_path, "r", encoding="utf-8") as f:
             events_list = ujson.loads(f.read())
         for event_dict in events_list:
-            event_obj = Single_Event.from_dict(event_dict, game.cat_class)
+            event_obj = Single_Event.from_dict(event_dict, cat_class)
             if event_obj:
-                game.cur_events_list.append(event_obj)
+                cur_events_list.append(event_obj)
     except FileNotFoundError:
         pass
 
@@ -608,3 +611,18 @@ def get_config_value(*args):
         config_value -= mod
 
     return config_value
+
+
+if not os.path.exists(get_save_dir() + "/settings.txt"):
+    os.makedirs(get_save_dir(), exist_ok=True)
+    with open(get_save_dir() + "/settings.txt", "w", encoding="utf-8") as write_file:
+        write_file.write("")
+load_settings()
+
+pygame.display.set_caption("Clan Generator")
+
+toggle_fullscreen(
+    fullscreen=settings["fullscreen"],
+    show_confirm_dialog=False,
+    ingame_switch=False,
+)

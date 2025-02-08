@@ -60,7 +60,7 @@ def set_display_mode(
     old_scale = screen_scale
     mouse_pos = pygame.mouse.get_pos()
 
-    from scripts.game_structure.game_essentials import game
+    from scripts.game_structure import game
 
     if fullscreen is None:
         fullscreen = game.settings["fullscreen"]
@@ -212,7 +212,7 @@ def determine_screen_scale(x, y, ingame_switch):
     global screen_scale, screen_x, screen_y, offset, game_screen_size
 
     if ingame_switch:
-        from scripts.game_structure.game_essentials import game
+        from scripts.game_structure import game
 
         screen_config = game.settings
     else:
@@ -264,7 +264,7 @@ def toggle_fullscreen(
     while display_change_in_progress:
         continue
 
-    from scripts.game_structure.game_essentials import game
+    from scripts.game_structure import game
 
     if fullscreen is None:
         fullscreen = not game.settings["fullscreen"]

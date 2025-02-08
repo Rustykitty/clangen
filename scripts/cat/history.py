@@ -1,7 +1,7 @@
 import random
 
 from scripts.cat.skills import SkillPath
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 class History:

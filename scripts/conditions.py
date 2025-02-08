@@ -9,7 +9,7 @@ TODO: Docs
   # pylint: enable=line-too-long
 
 from scripts.cat.skills import SkillPath
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 def medical_cats_condition_fulfilled(all_cats,

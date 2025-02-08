@@ -3,7 +3,7 @@ from typing import List
 from scripts.cat.cats import Cat
 from scripts.debug_commands.command import Command
 from scripts.debug_commands.utils import add_output_line_to_log, add_multiple_lines_to_log
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
 
 def get_cat_from_name_or_id(nameid: str) -> Cat:
