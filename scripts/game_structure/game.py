@@ -202,13 +202,14 @@ if config["fun"]["april_fools"]:
     config["fun"]["newborns_can_patrol"] = True
 
 def update_game():
+    global current_screen, switch_screens, clicked, keyspressed
+
     if current_screen != switches["cur_screen"]:
         current_screen = switches["cur_screen"]
         switch_screens = True
     clicked = False
     keyspressed = []
 
-@staticmethod
 def safe_save(path: str, write_data, check_integrity=False, max_attempts: int = 15):
     """If write_data is not a string, assumes you want this
     in json format. If check_integrity is true, it will read back the file
@@ -343,6 +344,8 @@ def save_clanlist(loaded_clan=None):
 
 def save_settings(currentscreen=None):
     """Save user settings for later use"""
+    global settings_changed
+
     if os.path.exists(get_save_dir() + "/settings.txt"):
         os.remove(get_save_dir() + "/settings.txt")
 
@@ -375,6 +378,8 @@ def load_settings():
 
 def switch_setting(setting_name):
     """Call this function to change a setting given in the parameter by one to the right on it's list"""
+
+    global settings_changed
     settings_changed = True
 
     # Give the index that the list is currently at
@@ -430,7 +435,8 @@ def save_cats():
 
 def save_faded_cats(clanname):
     """Deals with fades cats, if needed, adding them as faded"""
-    # nonlocal cat_to_fade
+
+    global cat_to_fade
     if cat_to_fade:
         directory = get_save_dir() + "/" + clanname + "/faded_cats"
         if not os.path.exists(directory):
