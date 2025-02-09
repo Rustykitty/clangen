@@ -1563,20 +1563,6 @@
             }
         }
     },
-    "#send_ur_button": {
-        "normal_image": {
-                "path": "resources\/images\/buttons\/send_ur.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/send_ur_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/send_ur_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/send_ur_unavailable.png"
-            }
-    },
     "#sub_tab_1_button": {
         "images": {
             "normal_image": {
