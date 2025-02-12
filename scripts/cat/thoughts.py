@@ -7,6 +7,9 @@ from scripts.game_structure.localization import load_lang_resource
 
 
 class Thoughts:
+
+    __slots__ = ()
+
     @staticmethod
     def thought_fulfill_rel_constraints(main_cat, random_cat, constraint) -> bool:
         """Check if the relationship fulfills the interaction relationship constraints."""
