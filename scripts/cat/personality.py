@@ -8,6 +8,15 @@ import ujson
 class Personality:
     """Hold personality information for a cat, and functions to deal with it"""
 
+    __slots__ = (
+        "_law",
+        "_social",
+        "_aggress",
+        "_stable",
+        "trait",
+        "kit",
+    )
+
     facet_types = ["lawfulness", "sociability", "aggression", "stability"]
     facet_range = [0, 16]
 
