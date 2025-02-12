@@ -5,6 +5,7 @@ os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
 from scripts.cat.cats import Cat
+from scripts.cat import thoughts
 from scripts.cat.thoughts import Thoughts
 
 class TestNotWorkingThoughts(unittest.TestCase):
@@ -24,7 +25,7 @@ class TestNotWorkingThoughts(unittest.TestCase):
     def available_thought_ids(self):
         """Return a list of id's for available thoughts"""
         possible = [thought for thought in self.thoughts if
-                    Thoughts.cats_fulfill_thought_constraints(
+                    thoughts.cats_fulfill_thought_constraints(
                         self.main,
                         self.other,
                         thought,
@@ -81,10 +82,10 @@ class TestsGetStatusThought(unittest.TestCase):
         camp = "camp2"
 
         # load thoughts
-        thoughts = Thoughts.load_thoughts(medicine, warrior, "expanded", biome, season, camp)
+        thoughts_list = thoughts.load_thoughts(medicine, warrior, "expanded", biome, season, camp)
 
         # when
-        function_thoughts = thoughts
+        function_thoughts = thoughts_list
 
     def test_exiled_thoughts(self):
         # given
@@ -96,7 +97,7 @@ class TestsGetStatusThought(unittest.TestCase):
         camp = "camp2"
 
         # load thoughts
-        thoughts = Thoughts.load_thoughts(cat, None, "expanded", biome, season, camp)
+        thoughts_list = thoughts.load_thoughts(cat, None, "expanded", biome, season, camp)
 
     def test_lost_thoughts(self):
         # given
@@ -107,7 +108,7 @@ class TestsGetStatusThought(unittest.TestCase):
         camp = "camp2"
 
         # load thoughts
-        thoughts = Thoughts.load_thoughts(cat, None, "expanded", biome, season, camp)
+        thoughts_list = thoughts.load_thoughts(cat, None, "expanded", biome, season, camp)
 
 
 class TestFamilyThoughts(unittest.TestCase):
@@ -121,8 +122,8 @@ class TestFamilyThoughts(unittest.TestCase):
         camp = "camp2"
 
         # when
-        function_thoughts1 = Thoughts.load_thoughts(parent, kit, "expanded", biome, season, camp)
-        function_thoughts2 = Thoughts.load_thoughts(kit, parent, "expanded", biome, season, camp)
+        function_thoughts1 = thoughts.load_thoughts(parent, kit, "expanded", biome, season, camp)
+        function_thoughts2 = thoughts.load_thoughts(kit, parent, "expanded", biome, season, camp)
 
         # then
         '''

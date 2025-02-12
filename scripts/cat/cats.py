@@ -20,7 +20,7 @@ from scripts.cat.names import Name
 from scripts.cat.pelts import Pelt
 from scripts.cat.personality import Personality
 from scripts.cat.skills import CatSkills
-from scripts.cat.thoughts import Thoughts
+from scripts.cat import thoughts
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.cat_relations.relationship import Relationship
 from scripts.conditions import (
@@ -572,8 +572,8 @@ class Cat:
         if self.status == "leader":
             if game.clan.leader_lives > 0:
                 lives_left = game.clan.leader_lives
-                death_thought = Thoughts.leader_death_thought(
-                    self, lives_left, darkforest
+                death_thought = leader_death_thought(
+                    lives_left, darkforest
                 )
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
                 self.thought = final_thought
@@ -582,7 +582,7 @@ class Cat:
                 self.dead = True
                 game.just_died.append(self.ID)
                 game.clan.leader_lives = 0
-                death_thought = Thoughts.leader_death_thought(self, 0, darkforest)
+                death_thought = leader_death_thought(0, darkforest)
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
                 self.thought = final_thought
                 if game.clan.instructor.df is False:
@@ -594,7 +594,7 @@ class Cat:
         else:
             self.dead = True
             game.just_died.append(self.ID)
-            death_thought = Thoughts.new_death_thought(self, darkforest, isoutside)
+            death_thought = new_death_thought(darkforest, isoutside)
             final_thought = event_text_adjust(self, death_thought, main_cat=self)
             self.thought = final_thought
 
@@ -1580,7 +1580,7 @@ class Cat:
         other_cat = all_cats.get(other_cat)
 
         # get chosen thought
-        chosen_thought = Thoughts.get_chosen_thought(
+        chosen_thought = thoughts.get_chosen_thought(
             self, other_cat, game_mode, biome, season, camp
         )
 
