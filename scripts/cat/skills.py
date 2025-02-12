@@ -148,6 +148,12 @@ class SkillTypeFlag(Flag):
 class Skill:
     """Skills handling functions mostly"""
 
+    __slots__ = (
+        "path",
+        "_p",
+        "interest_only",
+    )
+
     tier_ranges = ((0, 9), (10, 19), (20, 29))
     point_range = (0, 29)
 
@@ -288,6 +294,12 @@ class CatSkills:
     """
     Holds the cats skills, and handled changes in the skills.
     """
+
+    __slots__ = (
+        "primary",
+        "secondary",
+        "hidden",
+    )
 
     # Mentor Inflence groups.
     # pylint: disable=unsupported-binary-operation
