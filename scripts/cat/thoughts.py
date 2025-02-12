@@ -372,6 +372,27 @@ def load_thoughts(main_cat, other_cat, game_mode, biome, season, camp):
     except IOError:
         print("ERROR: loading thoughts")
 
+def get_chosen_thought(main_cat, other_cat, game_mode, biome, season, camp):
+    # get possible thoughts
+    try:
+        # checks if the cat is Rick Astley to give the rickroll thought, otherwise proceed as usual
+        if (main_cat.name.prefix + main_cat.name.suffix).replace(
+                " ", ""
+        ).lower() == "rickastley":
+            return i18n.t("defaults.rickroll")
+        else:
+            chosen_thought_group = choice(
+                load_thoughts(
+                    main_cat, other_cat, game_mode, biome, season, camp
+                )
+            )
+            chosen_thought = choice(chosen_thought_group["thoughts"])
+    except Exception:
+        traceback.print_exc()
+        chosen_thought = i18n.t("defaults.thought")
+
+    return chosen_thought
+
 def create_death_thoughts(inter_list) -> list:
     # helper function for death thoughts
     created_list = []
