@@ -31,6 +31,26 @@ BLOOD_RELATIVE_TYPES = [
 
 
 class Inheritance:
+
+    __slots__ = (
+        "cat",
+        "need_update",
+        "mates",
+        "other_mates",
+        "kits",
+        "kits_mates",
+        "siblings",
+        "siblings_mates",
+        "siblings_kits",
+        "parents",
+        "parents_siblings",
+        "cousins",
+        "grand_parents",
+        "grand_kits",
+        "all_involved",
+        "all_but_cousins",
+    )
+
     all_inheritances = {}  # ID: object
 
     def __init__(self, cat, born=False):
