@@ -17,6 +17,13 @@ class Name:
     Stores & handles name generation.
     """
 
+    __slots__ = (
+        "prefix",
+        "suffix",
+        "specsuffix_hidden",
+        "cat",
+    )
+
     if os.path.exists("resources/dicts/names/names.json"):
         with open("resources/dicts/names/names.json", encoding="utf-8") as read_file:
             names_dict = ujson.loads(read_file.read())
@@ -215,18 +222,18 @@ class Name:
         # This thing prevents any prefix duplications from happening.
         # Try statement stops this form running when initializing.
         with contextlib.suppress(NameError):
-            if self.prefix in names.prefix_history:
+            if self.prefix in prefix_history:
                 # do this recursively until a name that isn't on the history list.
                 self.give_prefix(eyes, colour, biome)
                 # prevent infinite recursion
-                if len(names.prefix_history) > 0:
-                    names.prefix_history.pop(0)
+                if len(prefix_history) > 0:
+                    prefix_history.pop(0)
             else:
-                names.prefix_history.append(self.prefix)
+                prefix_history.append(self.prefix)
             # Set the maximin length to 8 just to be sure
-            if len(names.prefix_history) > 8:
+            if len(prefix_history) > 8:
                 # removing at zero so the oldest gets removed
-                names.prefix_history.pop(0)
+                prefix_history.pop(0)
 
     # Generate possible suffix
     def give_suffix(self, pelt, biome, tortiepattern):
@@ -293,5 +300,4 @@ class Name:
         return self.prefix + self.suffix
 
 
-names = Name()
-names.prefix_history = []
+prefix_history = []
