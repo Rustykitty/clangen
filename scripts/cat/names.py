@@ -22,6 +22,7 @@ class Name:
         "suffix",
         "specsuffix_hidden",
         "cat",
+        "status" # NB: status is used in Cat.status_change, but it seems it's not used here
     )
 
     if os.path.exists("resources/dicts/names/names.json"):

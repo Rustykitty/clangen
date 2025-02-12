@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 from scripts.game_structure import image_cache, localization
 from scripts.cat.enums import CatAgeEnum
 from scripts.cat.history import History
-from scripts.cat.names import names
+from scripts.cat.names import Name
 from scripts.cat.sprites import sprites
 from scripts.game_structure.game_essentials import game
 import scripts.game_structure.screen_settings  # must be done like this to get updates when we change screen size etc
@@ -833,7 +833,7 @@ def create_new_cat(
         else:
             # grab starting names and accs for loners/kittypets
             if kittypet:
-                name = choice(names.names_dict["loner_names"])
+                name = choice(Name.names_dict["loner_names"])
                 if bool(getrandbits(1)):
                     # TODO: refactor this entire function to remove this call amongst other things
                     from scripts.cat.pelts import Pelt
@@ -842,10 +842,10 @@ def create_new_cat(
             elif loner and bool(
                     getrandbits(1)
             ):  # try to give name from full loner name list
-                name = choice(names.names_dict["loner_names"])
+                name = choice(Name.names_dict["loner_names"])
             else:
                 name = choice(
-                    names.names_dict["normal_prefixes"]
+                    Name.names_dict["normal_prefixes"]
                 )  # otherwise give name from prefix list (more nature-y names)
 
             # now we make the cats
