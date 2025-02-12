@@ -11,6 +11,31 @@ from scripts.utility import adjust_list_text
 
 
 class Pelt:
+
+    __slots__ = (
+        "name",
+        "colour",
+        "white_patches",
+        "eye_colour",
+        "eye_colour2",
+        "tortiebase",
+        "pattern",
+        "tortiepattern",
+        "tortiecolour",
+        "vitiligo",
+        "length",
+        "points",
+        "accessory",
+        "paralyzed",
+        "opacity",
+        "scars",
+        "tint",
+        "white_patches_tint",
+        "cat_sprites",
+        "reverse",
+        "skin",
+    )
+
     sprites_names = {
         "SingleColour": "single",
         "TwoColour": "single",
