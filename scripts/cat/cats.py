@@ -572,7 +572,7 @@ class Cat:
         if self.status == "leader":
             if game.clan.leader_lives > 0:
                 lives_left = game.clan.leader_lives
-                death_thought = leader_death_thought(
+                death_thought = thoughts.leader_death_thought(
                     lives_left, darkforest
                 )
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
@@ -582,7 +582,7 @@ class Cat:
                 self.dead = True
                 game.just_died.append(self.ID)
                 game.clan.leader_lives = 0
-                death_thought = leader_death_thought(0, darkforest)
+                death_thought = thoughts.leader_death_thought(0, darkforest)
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
                 self.thought = final_thought
                 if game.clan.instructor.df is False:
@@ -594,7 +594,7 @@ class Cat:
         else:
             self.dead = True
             game.just_died.append(self.ID)
-            death_thought = new_death_thought(darkforest, isoutside)
+            death_thought = thoughts.new_death_thought(darkforest, isoutside)
             final_thought = event_text_adjust(self, death_thought, main_cat=self)
             self.thought = final_thought
 
