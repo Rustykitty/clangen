@@ -9,6 +9,17 @@ class History:
     this class handles the cat's history!
     """
 
+    __slots__ = (
+        "beginning",
+        "mentor_influence",
+        "app_ceremony",
+        "lead_ceremony",
+        "possible_history",
+        "died_by",
+        "scar_events",
+        "murder"
+    )
+
     def __init__(self,
                  beginning=None,
                  mentor_influence=None,
