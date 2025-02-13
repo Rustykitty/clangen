@@ -21,6 +21,27 @@ from scripts.utility import get_personality_compatibility, process_text
 
 
 class Relationship:
+
+    __slots__ = (
+        "chosen_interaction",
+        "cat_from",
+        "cat_to",
+        "history", # TODO: remove `history` from attrs after #3392 is merged
+        "mates",
+        "family",
+        "opposite_relationship",
+        "interaction_str",
+        "triggered_event",
+        "log",
+        "romantic_love",
+        "platonic_like",
+        "dislike",
+        "admiration",
+        "comfortable",
+        "jealousy",
+        "trust",
+    )
+
     used_interaction_ids = []
     currently_loaded_lang = None
 
