@@ -11,6 +11,13 @@ TODO: Docs
 class Single_Event:
     """A class to hold info regarding a single event"""
 
+    __slots__ = (
+        "text",
+        "types",
+        "cats_involved",
+        "cat_dict",
+    )
+
     def __init__(self, text, types=None, cats_involved=None, cat_dict=None):
         """text: The event text.
         types: Which types of event, in a list or tuple. Current options are:
