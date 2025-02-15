@@ -400,21 +400,20 @@ def csv_load(all_cats):
                 game.switches[
                     "error_message"
                 ] = "9There was an error loading cat # " + str(attr[0])
-                the_cat.trait, the_cat.pelt.skin, the_cat.specialty = (
+                the_cat.personality.trait, the_cat.pelt.skin = (
                     attr[5],
-                    attr[24],
-                    attr[27],
+                    attr[24]
                 )
+                if attr[27] is not None:
+                    the_cat.pelt.scars.append(attr[27])
                 game.switches[
                     "error_message"
                 ] = "10There was an error loading cat # " + str(attr[0])
-                the_cat.skill = attr[25]
+                the_cat.skills = CatSkills.get_skills_from_old(attr[25], the_cat.status, the_cat.moons)
                 if len(attr) > 28:
                     the_cat.pelt.accessory = attr[28]
                 if len(attr) > 29:
-                    the_cat.specialty2 = attr[29]
-                else:
-                    the_cat.specialty2 = None
+                    the_cat.pelt.scars.append(attr[29])
                 game.switches[
                     "error_message"
                 ] = "11There was an error loading cat # " + str(attr[0])

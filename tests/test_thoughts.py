@@ -75,7 +75,7 @@ class TestsGetStatusThought(unittest.TestCase):
         warrior = Cat()
         medicine.status = "medicine cat"
         warrior.status = "warrior"
-        medicine.trait = "bold"
+        medicine.personality.trait = "bold"
         biome = "Forest"
         season = "Newleaf"
         camp = "camp2"
