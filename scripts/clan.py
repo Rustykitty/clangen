@@ -41,6 +41,44 @@ class Clan:
 
     """
 
+    __slots__ = (
+        "history", # TODO: remove after #3392 is merged
+        "name",
+        "leader",
+        "leader_lives",
+        "leader_predecessors",
+        "deputy",
+        "deputy_predecessors",
+        "medicine_cat",
+        "med_cat_list",
+        "med_cat_number",
+        "med_cat_predecessors",
+        "age",
+        "current_season",
+        "starting_season",
+        "instructor",
+        "biome",
+        "camp_bg",
+        "chosen_symbol",
+        "game_mode",
+        "pregnancy_data",
+        "inheritance",
+        "custom_pronouns",
+        "clan_settings",
+        "setting_lists",
+        "_reputation",
+        "starting_members",
+        "freshkill_pile",
+        "herb_supply",
+        "primary_disaster",
+        "secondary_disaster",
+        "war",
+        "last_focus_change",
+        "clans_in_focus",
+        "faded_ids",
+        "settings_changed",
+    )
+
     BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach"]
 
     CAT_TYPES = [
@@ -56,7 +94,6 @@ class Clan:
         "general",
     ]
 
-    leader_lives = 0
     clan_cats = []
     starclan_cats = []
     darkforest_cats = []
@@ -85,8 +122,6 @@ class Clan:
     with open("resources/placements.json", "r", encoding="utf-8") as read_file:
         layouts = ujson.loads(read_file.read())
 
-    age = 0
-    current_season = "Newleaf"
     all_clans = []
 
     def __init__(
