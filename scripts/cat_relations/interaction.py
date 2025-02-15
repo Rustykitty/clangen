@@ -4,6 +4,26 @@ from scripts.game_structure.localization import load_lang_resource
 
 
 class SingleInteraction:
+    __slots__ = (
+        "id",
+        "intensity",
+        "biome",
+        "season",
+        "interactions",
+        "get_injuries",
+        "has_injuries",
+        "relationship_constraint",
+        "backstory_constraint",
+        "main_status_constraint",
+        "random_status_constraint",
+        "main_trait_constraint",
+        "random_trait_constraint",
+        "main_skill_constraint",
+        "random_skill_constraint",
+        "reaction_random_cat",
+        "also_influences",
+    )
+
     def __init__(
         self,
         interact_id,
@@ -62,6 +82,24 @@ class SingleInteraction:
 
 
 class GroupInteraction:
+    __slots__ = (
+        "id",
+        "intensity",
+        "biome",
+        "season",
+        "cat_amount",
+        "interactions",
+        "get_injuries",
+        "has_injuries",
+        "relationship_constraint",
+        "backstory_constraint",
+        "status_constraint",
+        "trait_constraint",
+        "skill_constraint",
+        "specific_reaction",
+        "general_reaction",
+    )
+
     def __init__(
         self,
         interact_id,
