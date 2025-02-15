@@ -33,13 +33,13 @@ class Relationship:
         "interaction_str",
         "triggered_event",
         "log",
-        "romantic_love",
-        "platonic_like",
-        "dislike",
-        "admiration",
-        "comfortable",
-        "jealousy",
-        "trust",
+        "_romantic_love",
+        "_platonic_like",
+        "_dislike",
+        "_admiration",
+        "_comfortable",
+        "_jealousy",
+        "_trust",
     )
 
     used_interaction_ids = []
