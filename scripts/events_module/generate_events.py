@@ -507,9 +507,9 @@ class GenerateEvents:
 
         return possible_events
 
+    @staticmethod
     def possible_lead_den_events(
-        self,
-        cat,
+            cat,
         event_type: str,
         interaction_type: str,
         success: bool,
@@ -555,6 +555,3 @@ class GenerateEvents:
             possible_events.append(event)
 
         return possible_events
-
-
-generate_events = GenerateEvents()

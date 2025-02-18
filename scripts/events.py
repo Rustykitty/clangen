@@ -336,7 +336,7 @@ class Events:
             other_clan = get_other_clan(info_dict["other_clan"])
 
             # get events
-            events = generate_events.possible_lead_den_events(
+            events = GenerateEvents.possible_lead_den_events(
                 cat=gathering_cat,
                 other_clan_temper=other_clan.temperament,
                 player_clan_temper=info_dict["player_clan_temper"],
@@ -379,7 +379,7 @@ class Events:
             involved_cats = [outsider_cat.ID]
             invited_cats = []
 
-            events = generate_events.possible_lead_den_events(
+            events = GenerateEvents.possible_lead_den_events(
                 cat=outsider_cat,
                 event_type="outsider",
                 interaction_type=info_dict["interaction_type"],
