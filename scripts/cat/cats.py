@@ -31,7 +31,7 @@ from scripts.conditions import (
     medical_cats_condition_fulfilled,
 )
 from scripts.event_class import Single_Event
-from scripts.events_module.generate_events import GenerateEvents
+from scripts.events_module import generate_events
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.screen_settings import screen
@@ -152,7 +152,7 @@ class Cat:
             self.init_faded(ID, status, prefix, suffix, moons, **kwargs)
             return
 
-        self.generate_events = GenerateEvents()
+        self.generate_events = generate_events()
 
         # Private attributes
         self._mentor = None  # plz

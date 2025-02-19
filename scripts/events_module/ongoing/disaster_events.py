@@ -2,7 +2,7 @@ import random
 
 from scripts.cat.cats import Cat
 from scripts.event_class import Single_Event
-from scripts.events_module.generate_events import GenerateEvents
+from scripts.events_module import generate_events
 from scripts.game_structure.game_essentials import game
 from scripts.utility import get_alive_status_cats
 
@@ -34,7 +34,7 @@ class DisasterEvents():
 
         print('new disaster')
 
-        possible_events = GenerateEvents.possible_ongoing_events("disasters")
+        possible_events = generate_events.possible_ongoing_events("disasters")
         final_events = []
 
         for event in possible_events:
@@ -123,7 +123,7 @@ class DisasterEvents():
                         Single_Event(event, "misc"))
 
                     # now grab all the disaster's info and save it
-                    secondary_disaster = GenerateEvents.possible_ongoing_events(
+                    secondary_disaster = generate_events.possible_ongoing_events(
                                                                     "disasters",
                                                                     specific_event=secondary_disaster["disaster"])
                     game.clan.secondary_disaster = secondary_disaster
